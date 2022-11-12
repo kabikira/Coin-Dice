@@ -17,9 +17,9 @@ struct CoinView: View {
     var body: some View {
         VStack {
             Spacer()
-            RoundedRectangle(cornerRadius: 100)
+            Circle()
                 .foregroundColor(self.turn ? Color("CoinA"): Color("CoinB"))
-                .frame(width: 200, height: 200)
+                .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
                 .padding()
                 .rotation3DEffect(Angle(degrees: animationAmount), axis: (x: CGFloat(10), y: CGFloat(0), z: CGFloat(0)))
             Spacer()
@@ -40,6 +40,8 @@ struct CoinView: View {
                 }
             } ) {
                 Text("START")
+                    .font(.title2)
+                    .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.1)
                     .padding(.all, 30.0)
                     .background(Color("Button"))
                     .foregroundColor(.black)

@@ -25,6 +25,8 @@ struct DiceView: View {
                 playDice()
             }) {
                 Text("START")
+                    .font(.title2)
+                    .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.1)
                     .padding(30)
                     .background(Color("Button"))
                     .foregroundColor(.black)
