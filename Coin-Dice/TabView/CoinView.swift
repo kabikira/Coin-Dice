@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CoinView: View {
-    let number = [true, false]
-    @State var num = true
+    let reverse = [true, false]
+    @State var turn = true
     @State var animationAmount = 0.0
     @State var timer :Timer?
     @State var isButton = false
@@ -18,7 +18,7 @@ struct CoinView: View {
         VStack {
             Spacer()
             RoundedRectangle(cornerRadius: 100)
-                .foregroundColor(self.num ? .red: .blue)
+                .foregroundColor(self.turn ? Color("CoinA"): Color("CoinB"))
                 .frame(width: 200, height: 200)
                 .padding()
                 .rotation3DEffect(Angle(degrees: animationAmount), axis: (x: CGFloat(10), y: CGFloat(0), z: CGFloat(0)))
@@ -30,10 +30,10 @@ struct CoinView: View {
                 coinAnime()
                 }
                 timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) {_ in
-                    num.toggle()
+                    turn.toggle()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
-                    num = number.randomElement()!
+                    turn = reverse.randomElement()!
                     timer?.invalidate()
                     timer = nil
                     isButton = false
@@ -41,7 +41,7 @@ struct CoinView: View {
             } ) {
                 Text("START")
                     .padding(.all, 30.0)
-                    .background(Color.orange)
+                    .background(Color("Button"))
                     .foregroundColor(.black)
                     .cornerRadius(10)
             }
@@ -54,7 +54,7 @@ struct CoinView: View {
     }
     func coinAnime() {
         withAnimation(.linear(duration: 2)) {
-            num.toggle()
+            turn.toggle()
             self.animationAmount += 1080
         }
         

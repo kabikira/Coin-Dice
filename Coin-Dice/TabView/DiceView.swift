@@ -26,7 +26,7 @@ struct DiceView: View {
             }) {
                 Text("START")
                     .padding(30)
-                    .background(.orange)
+                    .background(Color("Button"))
                     .foregroundColor(.black)
                     .cornerRadius(10)
             }
@@ -35,7 +35,6 @@ struct DiceView: View {
         }
     }
         private func playDice() {
-            print("ボタンが押されたよ")
             isRolling = true
             timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             randomNumber = Int.random(in: 1...6)
